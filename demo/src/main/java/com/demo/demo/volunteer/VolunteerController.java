@@ -12,22 +12,22 @@ public class VolunteerController {
     private final VolunteerService volunteerService;
 
     @Autowired
-    public VolunteerController(VolunteerService volunteerService) {
+    public VolunteerController(VolunteerService volunteerService){
         this.volunteerService = volunteerService;
     }
 
     @GetMapping
-    public List<Volunteer> getVolunteers() {
+    public List<Volunteer> getVolunteers(){
         return volunteerService.getVolunteers();
     }
 
     @PostMapping
-    public void registerNewVolunteer(@RequestBody Volunteer volunteer) {
+    public void registerNewVolunteer(@RequestBody Volunteer volunteer){
         volunteerService.addNewVolunteer(volunteer);
     }
 
-    @DeleteMapping(path = "{volunteerId}")
-    public void deleteVolunteer(@PathVariable("volunteerId") Long volunteerId) {
-        volunteerService.deleteStudent(volunteerId);
+    @DeleteMapping(path="{volunteerId}")
+    public void deleteVolunteer(@PathVariable("volunteerId") Long volunteerId){
+        volunteerService.deleteVolunteer(volunteerId);
     }
 }

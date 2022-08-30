@@ -24,12 +24,13 @@ public class VolunteerService {
         Optional<Volunteer> volunteerOptional = volunteerRepository.findVolunteerByContactNumber(volunteer.getContactNumber());
 
         if (volunteerOptional.isPresent()) {
-            throw new IllegalStateException("Contact Number already Registered");
+            throw new IllegalStateException(
+                    "Contact Number already Registered");
         }
         volunteerRepository.save(volunteer);
     }
 
-    public void deleteStudent(Long volunteerId) {
+    public void deleteVolunteer(Long volunteerId) {
         boolean exists = volunteerRepository.existsById(volunteerId);
         if (!exists) {
             throw new IllegalStateException("volunteer with id " + volunteerId + " does not exists");
